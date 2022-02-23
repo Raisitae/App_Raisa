@@ -1,0 +1,104 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: arial;
+}
+
+html,
+body,
+#root {
+  height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  background-color: fff;
+}
+
+.header,
+footer {
+  background: rgb(17, 22, 28);
+  background: linear-gradient(
+    90deg,
+    rgba(17, 22, 28, 1) 17%,
+    rgba(49, 58, 57, 1) 50%,
+    rgba(17, 22, 28, 1) 100%
+  );
+}
+
+.header {
+  box-shadow: 0px 0px 6px black;
+  z-index: 100;
+}
+.header > .navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  list-style: none;
+  height: 5rem;
+  padding-left: 1rem;
+  color: #fff;
+}
+
+.header > .navBar > .navBar__title > ul {
+  font-size: 1.5em;
+}
+.navBar__items {
+  display: flex;
+}
+
+.header > .navBar > .navBar__items > li {
+  margin: 0 1rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.main {
+  flex-grow: 1;
+}
+
+.main > h1 {
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  margin-top: 2rem;
+  color: #838383;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0px;
+}
+
+footer > p {
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 100;
+}
+
+footer > .navBar {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  list-style: none;
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 100;
+}
+
+footer > .navBar > .navBar__items > li {
+  padding-left: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
