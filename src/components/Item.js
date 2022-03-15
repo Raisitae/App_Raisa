@@ -5,9 +5,9 @@ import ItemDetailContainer from "./ItemCount";
 const Item = ({ productos }) => {
   return (
     <div className="div__producto">
-      <h3>{productos.nombre}</h3>
-      <img src="https://picsum.photos/150" />
-      <p>${productos.precio}</p>
+      <h3>{productos.title}</h3>
+      <img className="img__productoListado" src={productos.image} />
+      <p>${productos.price}</p>
       <Link
         to={`/producto/${productos.id}`}
         element={<ItemDetailContainer />}

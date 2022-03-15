@@ -59,8 +59,18 @@ footer {
   text-decoration: none;
 }
 
+a:hover {
+  color: rgb(52, 112, 209);
+  transition: ease-in-out;
+  transition-duration: 200ms;
+}
+
 .main {
   flex-grow: 1;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 h1 {
@@ -80,11 +90,18 @@ h1 {
 .div__producto {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   text-align: justify;
   padding: 0.7rem;
   border-radius: 5px;
   box-shadow: 0px 0px 6px rgb(153, 153, 153);
   transition: all 300ms ease-in-out;
+  white-space: nowrap;
+}
+
+.div__producto > h3 {
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .div__producto:hover {
@@ -95,6 +112,14 @@ h1 {
 .div__producto > img {
   margin: 0.6rem 0rem;
 }
+
+.img__productoListado {
+  max-width: 150px;
+  max-height: 150px;
+
+  object-fit: cover;
+}
+
 footer {
   display: flex;
   flex-direction: column;
@@ -224,4 +249,34 @@ a {
   border: 1px solid #fff;
   color: #fff;
   background: rgb(52, 112, 209);
+}
+
+.article__itemDetail {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+
+.img__productoDetalle {
+  min-width: none;
+  max-height: 30vh;
+  max-width: 30vh;
+}
+
+.article__itemDetail-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 70%;
+  padding: 1rem 3rem;
+  font-size: 1rem;
+}
+
+.article__center {
+  display: flex;
+  display: column;
+  align-content: center;
+  justify-content: center;
+  padding-top: 10vh;
 }

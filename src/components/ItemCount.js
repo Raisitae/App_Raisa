@@ -30,7 +30,6 @@ function ItemCount({ stock, initial, onAdd }) {
 
   return (
     <div className="div__itemcount">
-      <h3>Remera estampada</h3>
       <div className="div__itemcount-botonera">
         <button className="button__restar" onClick={HandleRestar}></button>
         <p>{itemCount}</p>

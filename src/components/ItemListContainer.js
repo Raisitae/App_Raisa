@@ -4,51 +4,6 @@ import { useParams } from "react-router-dom";
 import ItemList from "./ItemList";
 
 const ItemListContainer = () => {
-  const ListadoProductos = [
-    {
-      id: 1,
-      nombre: "Producto 1",
-      precio: 10,
-      descripcion: "Esta es la descripción del producto",
-    },
-    {
-      id: 2,
-      nombre: "Producto 2",
-      precio: 10,
-      descripcion: "Esta es la descripción del producto",
-    },
-    {
-      id: 3,
-      nombre: "Producto 3",
-      precio: 10,
-      descripcion: "Esta es la descripción del producto",
-    },
-    {
-      id: 4,
-      nombre: "Producto 4",
-      precio: 10,
-      descripcion: "Esta es la descripción del producto",
-    },
-    {
-      id: 5,
-      nombre: "Producto 5",
-      precio: 10,
-      descripcion: "Esta es la descripción del producto",
-    },
-    {
-      id: 6,
-      nombre: "Producto 6",
-      precio: 10,
-      descripcion: "Esta es la descripción del producto",
-    },
-    {
-      id: 7,
-      nombre: "Producto 7",
-      precio: 10,
-      descripcion: "Esta es la descripción del producto",
-    },
-  ];
-
   const [loading, setLoading] = useState(true);
   const [productos, setProductos] = useState([]);
   const { idCategoria } = useParams();
@@ -56,24 +11,21 @@ const ItemListContainer = () => {
   useEffect(() => {
     toast.info("Cargando productos...");
 
-    const pedido = new Promise((res, rej) => {
-      setTimeout(() => {
-        res(ListadoProductos);
-      }, 2000);
-    });
-
-    pedido
+    fetch("https://fakestoreapi.com/products")
+      .then((response) => {
+        return response.json();
+      })
       .then((resultado) => {
         toast.dismiss();
         setProductos(resultado);
       })
-      .catch((error) => {
+      .catch(() => {
         toast.error("Error al traer los productos, intente nuevamente");
       })
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [idCategoria]);
 
   if (loading) {
     return <h1>Cargando...</h1>;
