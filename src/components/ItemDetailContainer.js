@@ -26,7 +26,7 @@ const ItemDetailContainer = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [idProducto]);
 
   if (loading) {
     return <h1>Cargando...</h1>;

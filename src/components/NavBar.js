@@ -16,10 +16,19 @@ const NavBar = () => {
           <NavLink to="/">Inicio</NavLink>
         </li>
         <li>
-          <NavLink to="/">Catálogo de productos</NavLink>
+          <NavLink to="/category/productos">Catálogo de productos</NavLink>
         </li>
         <li>
-          <NavLink to="#">Contáctanos</NavLink>
+          <NavLink to="/category/electronics">Electronica</NavLink>
+        </li>
+        <li>
+          <NavLink to="/category/jewelery">Joyería</NavLink>
+        </li>
+        <li>
+          <NavLink to="/category/women's clothing">Ropa femenina</NavLink>
+        </li>
+        <li>
+          <NavLink to="/category/men's clothing">Ropa masculina</NavLink>
         </li>
       </div>
     </nav>

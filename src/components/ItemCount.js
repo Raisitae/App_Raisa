@@ -1,12 +1,8 @@
 import React from "react";
 import { useState } from "react";
 
-function ItemCount({ stock, initial, onAdd }) {
+function ItemCount({ stock, initial, onAdd, disabled }) {
   let [itemCount, setEstado] = useState(1);
-
-  function onAdd() {
-    console.log(itemCount);
-  }
 
   const HandleSumar = () => {
     if (itemCount >= stock) {
@@ -24,7 +20,7 @@ function ItemCount({ stock, initial, onAdd }) {
   };
 
   const HandleAgregar = () => {
-    onAdd();
+    onAdd(itemCount);
     setEstado(1);
   };
 
@@ -35,7 +31,11 @@ function ItemCount({ stock, initial, onAdd }) {
         <p>{itemCount}</p>
         <button className="button__sumar" onClick={HandleSumar}></button>
       </div>
-      <button className="button__agregar" onClick={HandleAgregar}>
+      <button
+        disabled={disabled}
+        className="button__agregar"
+        onClick={HandleAgregar}
+      >
         Agregar al carrito
       </button>
     </div>
