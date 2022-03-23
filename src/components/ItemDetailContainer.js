@@ -13,7 +13,6 @@ const ItemDetailContainer = () => {
 
     fetch(`https://fakestoreapi.com/products/${idProducto}`)
       .then((response) => {
-        setTimeout(2000);
         toast.dismiss();
         return response.json();
       })
@@ -24,7 +23,9 @@ const ItemDetailContainer = () => {
         toast.error("Error al traer el detalle, intente nuevamente");
       })
       .finally(() => {
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
       });
   }, [idProducto]);
 

@@ -5,11 +5,9 @@ function ItemCount({ stock, initial, onAdd, disabled }) {
   let [itemCount, setEstado] = useState(1);
 
   const HandleSumar = () => {
-    if (itemCount >= stock) {
-      alert("Nos quedamos sin stock");
-    } else {
-      setEstado(itemCount + 1);
-    }
+    itemCount >= stock
+      ? alert("Nos quedamos sin stock")
+      : setEstado(itemCount + 1);
   };
 
   const HandleRestar = () => {
@@ -21,7 +19,6 @@ function ItemCount({ stock, initial, onAdd, disabled }) {
 
   const HandleAgregar = () => {
     onAdd(itemCount);
-    setEstado(1);
   };
 
   return (

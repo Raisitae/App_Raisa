@@ -23,7 +23,9 @@ const ItemListContainer = () => {
         toast.error("Error al traer los productos, intente nuevamente");
       })
       .finally(() => {
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
       });
   }, [idCategoria]);
 

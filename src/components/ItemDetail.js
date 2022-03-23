@@ -1,21 +1,20 @@
 import React from "react";
 import ItemCount from "./ItemCount";
 import { useState } from "react";
-import { useEffect } from "react";
 import { isDisabled } from "@testing-library/user-event/dist/utils";
+import { useNavigate } from "react-router-dom";
 
 const ItemDetail = ({ producto }) => {
-  let [stock, setStock] = useState(5);
-
+  let [cantidad, setCantidad] = useState(0);
   const [disabled, setDisabled] = useState(false);
+  let navigate = useNavigate();
 
-  const onAdd = (cantidadSeleccionada) => {
-    console.log("Añadir al carrito", cantidadSeleccionada);
-    if ((typeof cantidadSeleccionada === "number") & (stock != 0)) {
-      setStock(stock - cantidadSeleccionada);
-    } else if ((stock <= 0) & (stock === 0)) {
-      setDisabled(true);
-    }
+  const onAdd = (cantidad) => {
+    setCantidad(cantidad);
+    console.log(cantidad);
+    setTimeout(() => {
+      navigate("/carrito");
+    }, 1500);
   };
 
   return (
@@ -26,12 +25,16 @@ const ItemDetail = ({ producto }) => {
           <h3>{producto.title}</h3>
           <p>${producto.price}</p>
           <p className="itemDetail__descripcion">{producto.description}</p>
-          <ItemCount
-            disabled={disabled}
-            stock={stock}
-            initial={1}
-            onAdd={onAdd}
-          />
+          {cantidad === 0 ? (
+            <ItemCount
+              disabled={disabled}
+              stock={5}
+              initial={0}
+              onAdd={onAdd}
+            />
+          ) : (
+            <ItemCount disabled={true} stock={5} initial={1} onAdd={onAdd} />
+          )}
         </div>
       </article>
     </article>
