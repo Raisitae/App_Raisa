@@ -1,16 +1,20 @@
 import React from "react";
 import ItemCount from "./ItemCount";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { isDisabled } from "@testing-library/user-event/dist/utils";
 import { useNavigate } from "react-router-dom";
+import { CartContext } from "../contexto/CartContext";
 
 const ItemDetail = ({ producto }) => {
   let [cantidad, setCantidad] = useState(0);
   const [disabled, setDisabled] = useState(false);
   let navigate = useNavigate();
 
+  const { addToCart } = useContext(CartContext);
+
   const onAdd = (cantidad) => {
     setCantidad(cantidad);
+    addToCart(producto, cantidad);
     console.log(cantidad);
     setTimeout(() => {
       navigate("/carrito");
