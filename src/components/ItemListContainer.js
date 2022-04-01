@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 import ItemList from "./ItemList";
+import { db } from "./firebase";
+import { collection, getDocs, query, where, orderBy } from "firebase/firestore";
 
 const ItemListContainer = () => {
   const [loading, setLoading] = useState(true);
@@ -9,24 +11,43 @@ const ItemListContainer = () => {
   const { idCategoria } = useParams();
 
   useEffect(() => {
-    toast.info("Cargando productos...");
+    if (!idCategoria) {
+      const productosCollection = collection(db, "Productos");
 
-    fetch("https://fakestoreapi.com/products")
-      .then((response) => {
-        return response.json();
-      })
-      .then((resultado) => {
-        toast.dismiss();
-        setProductos(resultado);
-      })
-      .catch(() => {
-        toast.error("Error al traer los productos, intente nuevamente");
-      })
-      .finally(() => {
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
-      });
+      const pedido = getDocs(productosCollection);
+
+      toast.info("Cargando productos...");
+      pedido
+        .then((res) => setProductos(res.docs.map((doc) => doc.data())))
+
+        .catch((err) =>
+          toast.error("Error al traer los productos, intente nuevamente")
+        )
+        .finally(() => toast.dismiss(), setLoading(false));
+    } else {
+      const productosCollection = collection(db, "Productos");
+
+      const filtro = query(
+        productosCollection,
+        where("category", "==", idCategoria),
+        orderBy("id", "asc")
+      );
+
+      const pedido = getDocs(filtro);
+
+      pedido
+        .then((res) => setProductos(res.docs.map((doc) => doc.data())))
+
+        .catch((error) => {
+          console.error(error);
+        })
+        .finally(() =>
+          setTimeout(() => {
+            toast.dismiss();
+            setLoading(false);
+          }, 500)
+        );
+    }
   }, [idCategoria]);
 
   if (loading) {
