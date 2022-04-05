@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { CartContext } from "../contexto/CartContext";
 
 import { Link } from "react-router-dom";
+import Form from "./Formulario";
 
 const Carrito = () => {
   const { cart, calcularTotal, vaciarCarrito, borrarProd } =
@@ -17,7 +18,7 @@ const Carrito = () => {
           </Link>
         </div>
       ) : (
-        <div style={{ margin: "10px" }}>
+        <div>
           {cart.map((prod) => (
             <div className="div__carrito" key={prod.id}>
               <img className="img__carrito" src={prod.image} alt={prod.title} />
@@ -40,6 +41,9 @@ const Carrito = () => {
             <button className="button__carrito-all" onClick={vaciarCarrito}>
               Vaciar carrito
             </button>
+            <Link className="button__carrito-producto" to="/checkout">
+              Finalizar compra
+            </Link>
           </div>
         </div>
       )}

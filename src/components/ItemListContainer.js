@@ -12,7 +12,7 @@ const ItemListContainer = () => {
 
   useEffect(() => {
     if (!idCategoria) {
-      const productosCollection = collection(db, "Productos");
+      const productosCollection = collection(db, "productos");
 
       const pedido = getDocs(productosCollection);
 
@@ -25,15 +25,18 @@ const ItemListContainer = () => {
         )
         .finally(() => toast.dismiss(), setLoading(false));
     } else {
-      const productosCollection = collection(db, "Productos");
+      const productosCollection = collection(db, "productos");
 
-      const filtro = query(
+      /*const filtro = query(
         productosCollection,
         where("category", "==", idCategoria),
         orderBy("id", "asc")
       );
 
       const pedido = getDocs(filtro);
+    */
+
+      const pedido = getDocs(productosCollection);
 
       pedido
         .then((res) => setProductos(res.docs.map((doc) => doc.data())))

@@ -18,7 +18,7 @@ const ItemDetailContainer = () => {
   const { idProducto } = useParams();
 
   useEffect(() => {
-    const productosCollection = collection(db, "Productos");
+    const productosCollection = collection(db, "productos");
     const filtro = query(
       productosCollection,
       where("id", "==", Number(idProducto))

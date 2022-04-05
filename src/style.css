@@ -342,6 +342,7 @@ a {
   font-size: 0.8rem;
   font-weight: 100;
   transition: ease-in-out 300ms;
+  margin: 0.3rem;
 }
 
 .button__carrito-all:hover,
@@ -375,4 +376,51 @@ a {
   color: #fff;
   background: rgb(52, 112, 209);
   transition: ease-in-out 300ms;
+}
+
+.form__terminarCompra {
+  margin-top: 4rem;
+  display: grid;
+  place-items: center;
+  grid-gap: 0.5rem;
+}
+
+.form__terminarCompra > h2 {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: rgb(31, 31, 31);
+}
+.form__terminarCompra > h3 {
+  margin-top: 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: rgb(31, 31, 31);
+  width: 50vw;
+}
+
+.form__terminarCompra > button {
+  margin-top: 0.5rem;
+}
+
+.input__formulario {
+  padding: 0.8rem 0.5rem;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  width: 50vw;
+  background-color: rgb(131, 131, 131);
+  color: rgb(255, 255, 255);
+}
+
+.input__formulario:focus {
+  outline-offset: 0;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: rgb(52, 112, 209);
+  color: rgb(255, 255, 255);
+}
+
+.input__formulario::placeholder {
+  color: rgb(255, 255, 255);
 }
