@@ -1,7 +1,6 @@
 import React from "react";
 import ItemCount from "./ItemCount";
 import { useState, useContext } from "react";
-import { isDisabled } from "@testing-library/user-event/dist/utils";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../contexto/CartContext";
 

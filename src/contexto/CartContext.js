@@ -42,6 +42,14 @@ export const CartContextProvider = ({ children }) => {
     return totalCarrito;
   };
 
+  const cantProductos = () => {
+    let cantidadProductos = 0;
+    cart.forEach((prod) => {
+      cantidadProductos += prod.cantidad;
+    });
+    return cantidadProductos;
+  };
+
   const borrarProd = (id) => {
     setCart(cart.filter((prod) => prod.id !== id));
   };
@@ -54,6 +62,7 @@ export const CartContextProvider = ({ children }) => {
         vaciarCarrito,
         calcularTotal,
         borrarProd,
+        cantProductos,
       }}
     >
       {children}

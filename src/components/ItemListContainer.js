@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 import ItemList from "./ItemList";
 import { db } from "./firebase";
-import { collection, getDocs, query, where, orderBy } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
 const ItemListContainer = () => {
   const [loading, setLoading] = useState(true);
@@ -26,15 +26,6 @@ const ItemListContainer = () => {
         .finally(() => toast.dismiss(), setLoading(false));
     } else {
       const productosCollection = collection(db, "productos");
-
-      /*const filtro = query(
-        productosCollection,
-        where("category", "==", idCategoria),
-        orderBy("id", "asc")
-      );
-
-      const pedido = getDocs(filtro);
-    */
 
       const pedido = getDocs(productosCollection);
 

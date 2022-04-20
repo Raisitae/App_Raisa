@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 function ItemCount({ stock, initial, onAdd, disabled }) {
   let [itemCount, setEstado] = useState(1);
@@ -18,7 +19,11 @@ function ItemCount({ stock, initial, onAdd, disabled }) {
   };
 
   const HandleAgregar = () => {
-    onAdd(itemCount);
+    if (itemCount !== 0) {
+      onAdd(itemCount);
+    } else {
+      toast.error("No puede agregar 0 productos");
+    }
   };
 
   return (
